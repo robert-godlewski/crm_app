@@ -5,3 +5,5 @@ crmDjangoEnv/
 # inside crm_app folder
 crm_app/db.sqlite3
 crm_app/crm_app/__pycache__/
+crm_app/crm/__pycache__/
+crm_app/crm/migrations/
