@@ -1,0 +1,7 @@
+# Root Folder
+Robert_Godlewski_solo_project_idea/
+crmDjangoEnv/
+
+# inside crm_app folder
+crm_app/db.sqlite3
+crm_app/crm_app/__pycache__/
