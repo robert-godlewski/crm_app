@@ -13,12 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+#from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
-    # Django automatic download for the project
+    # Django automatic download for the project - might need later?
     #path('admin/', admin.site.urls),
     # My apps
+    # Links to crm directory
     path('', include('crm.urls')),
 ]
