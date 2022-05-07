@@ -28,4 +28,4 @@ Creating env using pip:
 {root folder} % pip3 install pipenv
 
 Installing flask:
-(root folder) ... % pipenv install flask flask-bcrypt PyMySQL
+(root folder) ... % pipenv install flask flask-bcrypt PyMySQL flash

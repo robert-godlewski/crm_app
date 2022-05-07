@@ -38,11 +38,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `crm_schema`.`task`
+-- Table `crm_schema`.`tasks`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `crm_schema`.`task` ;
+DROP TABLE IF EXISTS `crm_schema`.`tasks` ;
 
-CREATE TABLE IF NOT EXISTS `crm_schema`.`task` (
+CREATE TABLE IF NOT EXISTS `crm_schema`.`tasks` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `task_description` LONGTEXT NULL,
   `priority` INT NULL,

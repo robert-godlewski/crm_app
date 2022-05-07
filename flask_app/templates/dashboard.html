@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+    <div>
+        <h1>Welcome {{user.full_name()}},</h1>
+        <a href="/view_user/{{user.id}}">
+            Link to view the user - Need to replace with an image
+        </a>
+    </div>
+    <div>
+        <p>
+            Total of _ tasks.  Done with {{user.todos_done}} tasks.
+        </p>
+        <a href="#">New Task</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>Task</td>
+                <td>Priority</td>
+                <td>Due Date</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>
