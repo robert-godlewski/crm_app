@@ -4,7 +4,7 @@ The data on the table will be organized off of the date they are due (or when th
 A combo of both iCal and reminders on the iPhone/Mac.
 
 # Frameworks used
-* Django (Python)
+* Flask (Python)
 * Bootstrap (CSS)
 
 # Product Backlog
@@ -14,25 +14,18 @@ A combo of both iCal and reminders on the iPhone/Mac.
 * Create a desktop app version of this app.
 * Create a mobile app version using Swift/Java (need to learn both of these languages)
 
-# Django env
+# Flask env
 Running on http://localhost:8000/
 
-Activating env: 
-{root folder} % source crmDjangoEnv/bin/activate
+Activating virtual environment:
+{root folder} % pipenv shell
 
-Running the server: 
-(crmDjangoEnv) ... crm_app % python3 manage.py runserver
+Deactivating virtual environment:
+(root folder name) ... % exit
 
-Initialising Migrations in the app:
-(crmDjangoEnv) ... crm_app % python3 manage.py makemigrates
+# Other Flask code only use once
+Creating env using pip:
+{root folder} % pip3 install pipenv
 
-Running migrations to update the models of the app: 
-(crmDjangoEnv) ... crm_app % python3 manage.py migrate
-
-Deactivating env: 
-(crmDjangoEnv) ... {root folder} % deactivate
-
-# Other Django code only use once:
-Creating an venv: % python3 -m venv crmDjangoEnv
-
-Starting a Django project: (crmDjangoEnv) ... % django-admin startproject crm_app
+Installing flask:
+(root folder) ... % pipenv install flask flask-bcrypt PyMySQL
