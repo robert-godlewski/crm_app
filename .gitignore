@@ -7,3 +7,7 @@ crm_app/db.sqlite3
 crm_app/crm_app/__pycache__/
 crm_app/crm/__pycache__/
 crm_app/crm/migrations/
+crm_app/crm/static/img/
+
+# Database details
+database_sql/database_models/

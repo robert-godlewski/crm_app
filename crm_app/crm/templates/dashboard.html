@@ -11,20 +11,20 @@
 </head>
 <body>
     <div>
-        <h1>Welcome {{fName}} {{lName}},</h1>
+        <h1>Welcome {{user_info.fName}} {{user_info.lName}},</h1>
         <p>
             ******Details to take out later*******
-            Email: {{email}}, 
-            password: {{password}}
+            Email: {{user_info.email}}, 
+            password: {{user_info.password}}
         </p>
         <button>Link to view the user</button>
     </div>
     <div>
         <p>
-            Total of {{todo_list.length}} tasks.  Done with {{todos_done}} tasks.
+            Total of {{todo_list.length}} tasks.  Done with {{user_info.todos_done}} tasks.
         </p>
         <button>New Task</button>
-        <button>Logout</button>
+        <a href="/logout">Logout</a>
     </div>
     <table>
         <thead>

@@ -10,17 +10,27 @@ A combo of both iCal and reminders on the iPhone/Mac.
 # Product Backlog
 * Create an automation email reminder to send to the user about their assigned task.
 * Create a calendar page to see when an where things are due.
+* Add in a notes page and people so that users can interact.
 * Create a desktop app version of this app.
 * Create a mobile app version using Swift/Java (need to learn both of these languages)
 
 # Django env
 Running on http://localhost:8000/
 
-Activating env: % source crmDjangoEnv/bin/activate
+Activating env: 
+{root folder} % source crmDjangoEnv/bin/activate
 
-Running the server: (crmDjangoEnv) ... % python3 manage.py runserver
+Running the server: 
+(crmDjangoEnv) ... crm_app % python3 manage.py runserver
 
-Deactivating env: (crmDjangoEnv) ... % deactivate
+Initialising Migrations in the app:
+(crmDjangoEnv) ... crm_app % python3 manage.py makemigrates
+
+Running migrations to update the models of the app: 
+(crmDjangoEnv) ... crm_app % python3 manage.py migrate
+
+Deactivating env: 
+(crmDjangoEnv) ... {root folder} % deactivate
 
 # Other Django code only use once:
 Creating an venv: % python3 -m venv crmDjangoEnv

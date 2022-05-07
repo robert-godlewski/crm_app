@@ -6,7 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.index),
     path('create_user', views.create_user),
-    # Test Path
+    path('logout', views.logout),
     path('login', views.login),
     # Actual path need to build out with a database
     #path('login/<int:user_id>', views.login),
