@@ -1,13 +1,8 @@
 # Root Folder
 Robert_Godlewski_solo_project_idea/
-crmDjangoEnv/
-
-# inside crm_app folder
-crm_app/db.sqlite3
-crm_app/crm_app/__pycache__/
-crm_app/crm/__pycache__/
-crm_app/crm/migrations/
-crm_app/crm/static/img/
 
 # Database details
 database_sql/database_models/
+
+# inside crm_app folder - hide all, not doing Django anymore
+crm_app/

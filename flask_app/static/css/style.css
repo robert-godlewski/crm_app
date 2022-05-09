@@ -1,0 +1,9 @@
+/* Only here to make sure the link is working */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+form {
+    border: 1px black solid;
+}
