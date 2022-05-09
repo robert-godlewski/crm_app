@@ -15,8 +15,8 @@ def create_user():
     if not User.validate_user(request.form):
         return redirect('/')
     data = {
-        "fName": request.form['fName'],
-        "lName": request.form['lName'],
+        "f_name": request.form['f_name'],
+        "l_name": request.form['l_name'],
         "email": request.form['email'],
         "password": bcrypt.generate_password_hash(request.form['password'])
     }
@@ -55,6 +55,35 @@ def view_user(id):
     }
     user = User.get_user_by_id(data)
     return render_template("view_user.html", user=user)
+
+@app.route('/edit_user/<int:id>')
+def edit_user(id):
+    if 'user_id' not in session:
+        return redirect('/logout')
+    data = {
+        "id": id
+    }
+    user = User.get_user_by_id(data)
+    print(f"user info at the start of the edit_user route: {user}")
+    return render_template("edit_user.html", user=user)
+
+@app.route('/update/user', methods=['POST'])
+def update_user():
+    if 'user_id' not in session:
+        return redirect('/logout')
+    if not User.validate_user(request.form, False):
+        return redirect(f"/edit_user/{request.form['id']}")
+    print(f"Form Data: {request.form}")
+    data = {
+        "id": request.form['id'],
+        "f_name": request.form['f_name'],
+        "l_name": request.form['l_name'],
+        "email": request.form['email'],
+        "password": request.form['password']
+    }
+    User.update_user(data)
+    user_id = request.form['id']
+    return redirect(f"/view_user/{user_id}")
 
 @app.route('/logout')
 def logout():

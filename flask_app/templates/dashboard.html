@@ -9,17 +9,10 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
 <body>
+    <div><h1>Welcome {{user.full_name()}},</h1></div>
     <div>
-        <h1>Welcome {{user.full_name()}},</h1>
-        <a href="/view_user/{{user.id}}">
-            Link to view the user - Need to replace with an image
-        </a>
-    </div>
-    <div>
-        <p>
-            Total of _ tasks.  Done with {{user.todos_done}} tasks.
-        </p>
         <a href="#">New Task</a>
+        <a href="/view_user/{{user.id}}">View Details</a>
         <a href="/logout">Logout</a>
     </div>
     <table>

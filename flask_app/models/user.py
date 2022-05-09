@@ -11,23 +11,22 @@ class User:
 
     def __init__(self, data):
         self.id = data['id']
-        self.fName = data['fName']
-        self.lName = data['lName']
+        self.f_name = data['f_name']
+        self.l_name = data['l_name']
         self.email = data['email']
         self.password = data['password']
-        self.todos_done = data['todos_done']
-        self.image = data['image']
+        self.todos_fin = data['todos_fin']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
     def full_name(self): 
-        return self.fName + " " + self.lName
+        return self.f_name + " " + self.l_name
 
     @classmethod
     def create_user(cls, data):
         query = '''
-        INSERT INTO users ( fName, lName, email, password, todos_done, created_at, updated_at )
-        VALUES ( %(fName)s, %(lName)s, %(email)s, %(password)s, 0, NOW(), NOW() );
+        INSERT INTO users ( f_name, l_name, email, password, todos_fin, created_at, updated_at )
+        VALUES ( %(f_name)s, %(l_name)s, %(email)s, %(password)s, 0, NOW(), NOW() );
         '''
         return connectToMySQL(cls.db_name).query_db(query, data)
 
@@ -44,25 +43,35 @@ class User:
         if len(results) < 1: return False
         return cls(results[0])
 
+    @classmethod
+    def update_user(cls, data):
+        query = '''
+        UPDATE users 
+        SET f_name = %(f_name)s, l_name = %(l_name)s, email = %(email)s, 
+        password = %(password)s, updated_at = NOW() 
+        WHERE id = %(id)s;
+        '''
+        return connectToMySQL(cls.db_name).query_db(query, data)
+
     @staticmethod
-    def validate_user(user):
+    def validate_user(user, new_user=True):
         is_valid = True
         query = "SELECT * FROM users WHERE email = %(email)s;"
         results = connectToMySQL(User.db_name).query_db(query, user)
         print(user)
-        if len(user['fName']) < 2:
+        if len(user['f_name']) < 2:
             flash("First Name must be at least 2 characters.", "create_user")
             is_valid = False
-        if len(user['lName']) < 2:
+        if len(user['l_name']) < 2:
             flash("Last Name must be at least 2 characters.", "create_user")
             is_valid = False
-        if len(results) >= 1:
+        if len(results) >= 1 and new_user == True:
             flash("Email is already taken.", "create_user")
             is_valid = False
         if not EMAIL_REGEX.match(user['email']):
             flash("Invalid email address", "create_user")
             is_valid = False
-        if len(user['password']) < 8:
+        if len(user['password']) < 8 :
             flash("Password must be at least 8 characters", "create_user")
             is_valid = False
         if user['password'] != user['conf_password']:

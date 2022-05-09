@@ -15,16 +15,16 @@
     </div>
     <div>
         <div>
-            <p>First Name: {{user.fName}}</p>
-            <p>Last Name: {{user.lName}}</p>
+            <p>First Name: {{user.f_name}}</p>
+            <p>Last Name: {{user.l_name}}</p>
             <p>Email: {{user.email}}</p>
         </div>
         <div>
             <p>Todos: __</p>
-            <p>Todos Done: {{user.todos_done}}</p>
+            <p>Todos Done: {{user.todos_fin}}</p>
         </div>
         <div>
-            <a href="#">Edit User</a>
+            <a href="/edit_user/{{user.id}}">Edit User</a>
             <a href="#">Delete User</a>
         </div>
     </div>
