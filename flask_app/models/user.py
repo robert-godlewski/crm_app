@@ -53,6 +53,11 @@ class User:
         '''
         return connectToMySQL(cls.db_name).query_db(query, data)
 
+    @classmethod
+    def delete_user(cls, data):
+        query = "DELETE FROM users WHERE id = %(id)s;"
+        return connectToMySQL(cls.db_name).query_db(query, data)
+
     @staticmethod
     def validate_user(user, new_user=True):
         is_valid = True

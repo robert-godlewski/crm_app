@@ -85,6 +85,23 @@ def update_user():
     user_id = request.form['id']
     return redirect(f"/view_user/{user_id}")
 
+@app.route('/destroy/<int:id>')
+def destroy_user_and_tasks(id):
+    if 'user_id' not in session:
+        return redirect('/logout')
+    # Need to first delete all tasks from the database
+    '''
+    tasks = {
+        "user_id": id
+    }
+    '''
+    # Then delete the user
+    user_data = {
+        "id": id
+    }
+    User.delete_user(user_data)
+    return redirect('/logout')
+
 @app.route('/logout')
 def logout():
     session.clear()
