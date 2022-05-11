@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Task</title>
+</head>
+<body>
+    <div>
+        <h1>View Task</h1>
+        <a href="/dashboard">Return to Dashboard</a>
+    </div>
+    <div>
+        <div>
+            <p>Task Description: {{task.task_description}}</p>
+            <p>Reminder Time: {{task.reminder_time}}</p>
+            <p>Due Date: {{task.due_date}}</p>
+        </div>
+        <div>
+            <p>
+                Is Recurring task? 
+                {% if task.is_recurring == 1 %}
+                Yes
+                {% else %}
+                No
+                {% endif %}
+            </p>
+            {% if task.priority > 0 %}
+            <p>
+                Priority: 
+                {% if task.priority == 3 %}
+                High
+                {% elif task.priority == 2 %}
+                Mid
+                {% elif task.priority == 1 %}
+                Low
+                {% endif %}
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

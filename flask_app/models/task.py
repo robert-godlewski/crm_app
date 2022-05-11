@@ -29,21 +29,42 @@ class Task:
     def get_all_tasks_for_user(cls, data):
         query = "SELECT * FROM tasks WHERE user_id = %(user_id)s;"
         results = connectToMySQL(cls.db_name).query_db(query, data)
-        print(results)
         all_tasks = list()
         for row in results:
             task = cls(row)
-            print(task)
             all_tasks.append(task)
-        print(all_tasks)
         return all_tasks
     
     @classmethod
     def get_task_by_id(cls, data):
         query = "SELECT * FROM tasks WHERE id = %(id)s;"
         results = connectToMySQL(cls.db_name).query_db(query, data)
-        print(results)
         return cls(results[0])
+
+    @classmethod
+    def get_task_by_description(cls, data):
+        query = "SELECT * FROM tasks where task_description = %(task_description)s;"
+        results = connectToMySQL(cls.db_name).query_db(query, data)
+        return cls(results[0])
+
+    @classmethod
+    def update_task(cls, data):
+        query = '''
+        UPDATE tasks
+        SET task_description = %(task_description)s, priority = %(priority)s, is_recurring = %(is_recurring)s, reminder_time = %(reminder_time)s, due_date = %(due_date)s, updated_at = NOW()
+        WHERE id = %(id)s;
+        '''
+        return connectToMySQL(cls.db_name).query_db(query, data)
+
+    @classmethod
+    def delete_task(cls, data):
+        query = "DELETE FROM tasks where id = %(id)s;"
+        return connectToMySQL(cls.db_name).query_db(query, data)
+
+    @classmethod
+    def delete_all_tasks_for_user(cls, data):
+        query = "DELETE FROM tasks where user_id = %(user_id)s;"
+        return connectToMySQL(cls.db_name).query_db(query, data)
 
     @staticmethod
     def validate_task(task):

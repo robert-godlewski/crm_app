@@ -59,13 +59,16 @@ def create_task():
         "due_date": due_date,
         "user_id": session['user_id']
     }
-    print(f"passed in data = {data}")
     task.Task.create_task(data)
-    # Temporary redirect to see if it works
-    return redirect('/dashboard')
+    new_task_created = task.Task.get_task_by_description(data)
+    return redirect(f"/view_task/{new_task_created.id}")
 
 @app.route('/view_task/<int:id>')
-def view_task(id): pass
+def view_task(id): 
+    if 'user_id' not in session:
+        return redirect('/logout')
+    task_info = task.Task.get_task_by_id({"id": id})
+    return render_template("view_task.html", task=task_info)
 
 @app.route('/edit_task/<int:id>')
 def edit_task(id): pass

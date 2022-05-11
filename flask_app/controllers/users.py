@@ -82,14 +82,11 @@ def update_user():
 def destroy_user_and_tasks(id):
     if 'user_id' not in session:
         return redirect('/logout')
-    # Need to first delete all tasks from the database - Not setup yet
-    '''
-    tasks = {
-        "user_id": id
-    }
-    '''
+    task.Task.delete_all_tasks_for_user({"user_id": id})
+    print("Deleted all tasks....")
     # Then delete the user - This currently works as it should
     user.User.delete_user({"id": id})
+    print("Deleted User.")
     return redirect('/logout')
 
 @app.route('/logout')
