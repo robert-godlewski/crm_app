@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Task</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+    <div>
+        <h1>New Task</h1>
+        <a href="/dashboard">Return to Dashboard</a>
+    </div>
+    <form action="/create_task" method="post">
+        <div>
+        {% with messages = get_flashed_messages(category_filter=['create_task']) %}
+            {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        </div>
+        <div>
+            <div>
+                <label>Task Description:</label>
+                <textarea name="task_description" rows="4" cols="50"></textarea>
+            </div>
+            <div>
+                <label>Priority:</label>
+                <select name="priority">
+                    <option value="0">Select one.....</option>
+                    <option value="1">Low</option>
+                    <option value="2">Mid</option>
+                    <option value="3">High</option>
+                </select>
+            </div>
+            <div>
+                <label>Is recurring?</label>
+                <input type="checkbox" name="is_recurring"/>
+            </div>
+        </div>
+        <div>
+            <div>
+                <label>Reminder time:</label>
+                <input type="time" name="reminder_time"/>
+            </div>
+            <div>
+                <label>Due Date:</label>
+                <input type="date" name="due_date"/>
+            </div>
+            <button type="submit">Create Task</button>
+        </div>
+    </form>
+</body>
+</html>

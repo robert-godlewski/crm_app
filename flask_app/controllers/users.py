@@ -1,6 +1,6 @@
 from flask import render_template, redirect, session, request, flash
 from flask_app import app
-from flask_app.models.user import User
+from flask_app.models import user, task
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt(app)
@@ -12,7 +12,7 @@ def index():
 
 @app.route('/create_user', methods=['POST'])
 def create_user():
-    if not User.validate_user(request.form):
+    if not user.User.validate_user(request.form):
         return redirect('/')
     data = {
         "f_name": request.form['f_name'],
@@ -20,13 +20,13 @@ def create_user():
         "email": request.form['email'],
         "password": bcrypt.generate_password_hash(request.form['password'])
     }
-    user_id = User.create_user(data)
+    user_id = user.User.create_user(data)
     session['user_id'] = user_id
     return redirect('/dashboard')
 
 @app.route('/login', methods=['POST'])
 def login():
-    user_in_db = User.get_user_by_email(request.form)
+    user_in_db = user.User.get_user_by_email(request.form)
     if not user_in_db:
         flash("Invalid Email/Password", "login")
         return redirect('/')
@@ -40,40 +40,33 @@ def login():
 def dashboard():
     if 'user_id' not in session:
         return redirect('/logout')
-    data = {
-        "id": session['user_id']
-    }
-    user = User.get_user_by_id(data)
-    return render_template("dashboard.html", user=user)
+    user_id = session['user_id']
+    user_info = user.User.get_user_by_id({"id": user_id})
+    tasks = task.Task.get_all_tasks_for_user({"user_id": user_id})
+    return render_template("dashboard.html", user=user_info, tasks=tasks, task_num=len(tasks))
 
 @app.route('/view_user/<int:id>')
 def view_user(id):
     if 'user_id' not in session:
         return redirect('/logout')
-    data = {
-        "id": id
-    }
-    user = User.get_user_by_id(data)
-    return render_template("view_user.html", user=user)
+    user_info = user.User.get_user_by_id({"id": id})
+    tasks = task.Task.get_all_tasks_for_user({"user_id": id})
+    tasks_length = len(tasks)
+    return render_template("view_user.html", user=user_info, tasks_num=tasks_length)
 
 @app.route('/edit_user/<int:id>')
 def edit_user(id):
     if 'user_id' not in session:
         return redirect('/logout')
-    data = {
-        "id": id
-    }
-    user = User.get_user_by_id(data)
-    print(f"user info at the start of the edit_user route: {user}")
-    return render_template("edit_user.html", user=user)
+    user_info = user.User.get_user_by_id({"id": id})
+    return render_template("edit_user.html", user=user_info)
 
 @app.route('/update/user', methods=['POST'])
 def update_user():
     if 'user_id' not in session:
         return redirect('/logout')
-    if not User.validate_user(request.form, False):
+    if not user.User.validate_user(request.form, False):
         return redirect(f"/edit_user/{request.form['id']}")
-    print(f"Form Data: {request.form}")
     data = {
         "id": request.form['id'],
         "f_name": request.form['f_name'],
@@ -81,25 +74,22 @@ def update_user():
         "email": request.form['email'],
         "password": request.form['password']
     }
-    User.update_user(data)
+    user.User.update_user(data)
     user_id = request.form['id']
     return redirect(f"/view_user/{user_id}")
 
-@app.route('/destroy/<int:id>')
+@app.route('/destroy/user/<int:id>')
 def destroy_user_and_tasks(id):
     if 'user_id' not in session:
         return redirect('/logout')
-    # Need to first delete all tasks from the database
+    # Need to first delete all tasks from the database - Not setup yet
     '''
     tasks = {
         "user_id": id
     }
     '''
-    # Then delete the user
-    user_data = {
-        "id": id
-    }
-    User.delete_user(user_data)
+    # Then delete the user - This currently works as it should
+    user.User.delete_user({"id": id})
     return redirect('/logout')
 
 @app.route('/logout')

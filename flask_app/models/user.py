@@ -63,7 +63,7 @@ class User:
         is_valid = True
         query = "SELECT * FROM users WHERE email = %(email)s;"
         results = connectToMySQL(User.db_name).query_db(query, user)
-        print(user)
+        #print(user)
         if len(user['f_name']) < 2:
             flash("First Name must be at least 2 characters.", "create_user")
             is_valid = False

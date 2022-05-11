@@ -11,20 +11,41 @@
 <body>
     <div><h1>Welcome {{user.full_name()}},</h1></div>
     <div>
-        <a href="#">New Task</a>
+        <a href="/new_task">New Task</a>
         <a href="/view_user/{{user.id}}">View Details</a>
         <a href="/logout">Logout</a>
     </div>
     <table>
         <thead>
             <tr>
-                <td>Task</td>
-                <td>Priority</td>
-                <td>Due Date</td>
-                <td>Actions</td>
+                <th>Task</th>
+                <th>Priority</th>
+                <th>Due Date</th>
+                <th>Actions</th>
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+        {% for task in tasks %}
+            <tr>
+                <td>{{task.task_description}}</td>
+                <td>
+                {% if task.priority == 1 %}
+                Low
+                {% elif task.priority == 2 %}
+                Mid
+                {% elif task.priority == 3 %}
+                High
+                {% endif %}
+                </td>
+                <td>{{task.due_date}}</td>
+                <td>
+                    <a href="#">View</a> | 
+                    <a href="#">Edit</a> | 
+                    <a href="#">Done</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
     </table>
 </body>
 </html>
