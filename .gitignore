@@ -4,7 +4,7 @@ Robert_Godlewski_solo_project_idea/
 # Database details
 database_sql/database_models/
 
-# Keys
+# Hide the Keys
 flask_app/config/project_key.py
 
 # inside crm_app folder - hide all, not doing Django anymore

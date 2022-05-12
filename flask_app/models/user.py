@@ -54,6 +54,11 @@ class User:
         return connectToMySQL(cls.db_name).query_db(query, data)
 
     @classmethod
+    def update_user_todo_fin_count(cls, data):
+        query = "UPDATE users SET todos_fin = %(todos_fin)s WHERE id = %(id)s;"
+        return connectToMySQL(cls.db_name).query_db(query, data)
+
+    @classmethod
     def delete_user(cls, data):
         query = "DELETE FROM users WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query, data)
@@ -63,7 +68,7 @@ class User:
         is_valid = True
         query = "SELECT * FROM users WHERE email = %(email)s;"
         results = connectToMySQL(User.db_name).query_db(query, user)
-        print(user)
+        #print(user)
         if len(user['f_name']) < 2:
             flash("First Name must be at least 2 characters.", "create_user")
             is_valid = False

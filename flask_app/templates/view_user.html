@@ -20,12 +20,12 @@
             <p>Email: {{user.email}}</p>
         </div>
         <div>
-            <p>Todos: __</p>
+            <p>Todos: {{tasks_num}}</p>
             <p>Todos Done: {{user.todos_fin}}</p>
         </div>
         <div>
             <a href="/edit_user/{{user.id}}">Edit User</a>
-            <a href="/destroy/{{user.id}}">Delete User</a>
+            <a href="/destroy/user/{{user.id}}">Delete User</a>
         </div>
     </div>
 </body>
