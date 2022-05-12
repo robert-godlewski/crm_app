@@ -40,8 +40,8 @@
                 <td>{{task.due_date}}</td>
                 <td>
                     <a href="/view_task/{{task.id}}">View</a> | 
-                    <a href="#">Edit</a> | 
-                    <a href="#">Done</a>
+                    <a href="/edit_task/{{task.id}}">Edit</a> | 
+                    <a href="/destroy/task/{{task.id}}">Done</a>
                 </td>
             </tr>
         {% endfor %}

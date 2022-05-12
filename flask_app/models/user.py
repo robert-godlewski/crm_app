@@ -54,6 +54,11 @@ class User:
         return connectToMySQL(cls.db_name).query_db(query, data)
 
     @classmethod
+    def update_user_todo_fin_count(cls, data):
+        query = "UPDATE users SET todos_fin = %(todos_fin)s WHERE id = %(id)s;"
+        return connectToMySQL(cls.db_name).query_db(query, data)
+
+    @classmethod
     def delete_user(cls, data):
         query = "DELETE FROM users WHERE id = %(id)s;"
         return connectToMySQL(cls.db_name).query_db(query, data)

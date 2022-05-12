@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Task</title>
+    <title>Edit Task</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 </head>
@@ -13,7 +13,7 @@
         <h1>New Task</h1>
         <a href="/dashboard">Return to Dashboard</a>
     </div>
-    <form action="/create_task" method="post">
+    <form action="/update/task" method="post">
         <div>
         {% with messages = get_flashed_messages(category_filter=['create_task']) %}
             {% if messages %}
@@ -24,14 +24,15 @@
         {% endwith %}
         </div>
         <div>
+            <input name="id" type="hidden" value="{{task.id}}"/>
             <div>
                 <label>Task Description:</label>
-                <textarea name="task_description" rows="4" cols="50"></textarea>
+                <textarea name="task_description" rows="4" cols="50">{{task.task_description}}</textarea>
             </div>
             <div>
                 <label>Priority:</label>
                 <select name="priority">
-                    <option value="0" selected>Select one.....</option>
+                    <option value="0">Select one.....</option>
                     <option value="1">Low</option>
                     <option value="2">Mid</option>
                     <option value="3">High</option>
@@ -45,13 +46,14 @@
         <div>
             <div>
                 <label>Reminder time:</label>
-                <input type="time" name="reminder_time"/>
+                <input type="time" name="reminder_time" value="{{task.reminder_time}}"/>
             </div>
             <div>
                 <label>Due Date:</label>
-                <input type="date" name="due_date"/>
+                <input type="date" name="due_date" value="{{task.due_date}}"/>
             </div>
-            <button type="submit">Create Task</button>
+            <input name="user_id" type="hidden" value="{{task.user_id}}"/>
+            <button type="submit">Edit Task</button>
         </div>
     </form>
 </body>
