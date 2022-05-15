@@ -14,6 +14,9 @@ A combo of both iCal and reminders on the iPhone/Mac.
 * Create a desktop app version of this app.
 * Create a mobile app version using Swift/Java (need to learn both of these languages)
 
+# Siting work
+For datetime module for class details on the python documentation: https://docs.python.org/3/library/datetime.html
+
 # Flask env
 Running on http://localhost:8000/
 
