@@ -5,30 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/> 
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>-->
 </head>
-<body>
-    <div><h1>Welcome {{user.full_name()}},</h1></div>
-    <div>
-        <a href="/new_task">New Task</a>
-        <a href="/view_user/{{user.id}}">View Details</a>
-        <a href="/logout">Logout</a>
+<body class="container">
+    <div class="row p-lg-3 p-2">
+        <h1 class="col-lg-8 col-12">
+            Welcome {{user.full_name()}},
+        </h1>
+        <div class="col-lg-4 col-12">
+            <a href="/new_task" class="btn btn-primary">
+                New Task
+            </a>
+            <a href="/view_user/{{user.id}}" class="btn btn-info">
+                View Details
+            </a>
+            <a href="/logout" class="btn btn-danger">
+                Logout
+            </a>
+        </div>
     </div>
-    <table>
+    <table class="table table-striped border border-dark border-2">
         <thead>
             <tr>
-                <th>Task</th>
-                <th>Priority</th>
-                <th>Due Date</th>
-                <th>Actions</th>
+                <th class="border border-dark border-1">Task</th>
+                <th class="border border-dark border-1">Priority</th>
+                <th class="border border-dark border-1">Due Date</th>
+                <th class="border border-dark border-1">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for task in tasks %}
             <tr>
-                <td>{{task.task_description}}</td>
-                <td>
+                <td class="border border-dark border-1">{{task.task_description}}</td>
+                <td class="border border-dark border-1">
                 {% if task.priority == 1 %}
                 Low
                 {% elif task.priority == 2 %}
@@ -37,15 +48,16 @@
                 High
                 {% endif %}
                 </td>
-                <td>{{task.due_date}}</td>
-                <td>
-                    <a href="/view_task/{{task.id}}">View</a> | 
-                    <a href="/edit_task/{{task.id}}">Edit</a> | 
-                    <a href="/destroy/task/{{task.id}}">Done</a>
+                <td class="border border-dark border-1">{{task.due_date}}</td>
+                <td class="border border-dark border-1">
+                    <a href="/view_task/{{task.id}}" class="btn btn-secondary">View</a>
+                    <a href="/edit_task/{{task.id}}" class="btn btn-warning">Edit</a>
+                    <a href="/destroy/task/{{task.id}}" class="btn btn-success">Done</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
