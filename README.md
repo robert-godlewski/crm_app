@@ -11,6 +11,29 @@ Inorder for the application to work you will need to add in a project_key.py fil
 * Flask (Python)
 * Bootstrap (CSS/JavaScript)
 
+# Website_views
+
+## Login and registration (home page)
+![Login and Registration](/crm_images/login_signup.png)
+
+## Dashboard
+![The Users Dashboard to view all tasks](/crm_images/users_dashboard.png)
+
+## Viewing (and deleting) User's details
+![View everything about the user](/crm_images/user_details.png)
+
+## Editing user info
+![Editing the user](/crm_images/editing_user_info.png)
+
+## Adding in new tasks
+![Creating new tasks todo](/crm_images/adding_new_task.png)
+
+## Viewing task details
+![Reading details of the task selected](/crm_images/task_details.png)
+
+## Editing a task
+![Editing task information](/crm_images/editing_a_task.png)
+
 # Product Backlog
 * Create an automation email reminder to send to the user about their assigned task.
 * Add in a warning page before deleting an account
