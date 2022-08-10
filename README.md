@@ -5,11 +5,30 @@ An app inspired by both of Apple's Reminders app and iCal.
 
 Go to http://35.162.237.112/ to see the live website run off of aws-ec2 server.
 
+# Release Notes
+master branch in the repository is the current and up to date material.
+
+version1 branch in the repository is the first initial version I did as one of my personal projects through Coding Dojo:
+* Begun the Project and modularize it for future CICD
+* Full CRUD of Users
+* Full CRUD of Tasks
+
+version2 branch is in current development phase.
+
+# Citing work
+For datetime module for class details on the python documentation: https://docs.python.org/3/library/datetime.html
+Also look at both Flask and Bootstrap documentation for more info.
+
 # Frameworks used
 * Flask (Python)
 * Bootstrap (CSS/JavaScript)
 
-# Website_views
+# Todos
+* Apply some of the Backlog ideas (Read below under Product Backlog Section of this file)
+* Instead of outright deleting a task how about adding in another list of tasks done in another table for later reference.
+* Use React.js to make the reminder automation smoother, making Flask more like an API - Useful references for Flask-React: https://towardsdatascience.com/build-deploy-a-react-flask-app-47a89a5d17d9
+
+# Website Views - Version 1
 
 ## Login and registration (home page)
 ![Login and Registration](/crm_images/login_signup.png)
@@ -39,15 +58,6 @@ Go to http://35.162.237.112/ to see the live website run off of aws-ec2 server.
 * Add in a notes page and people so that users can interact.
 * Create a desktop app version of this app using Docker.
 * Create a mobile app version using Swift/Java.
-
-# Citing work
-For datetime module for class details on the python documentation: https://docs.python.org/3/library/datetime.html
-Also look at both Flask and Bootstrap documentation for more info.
-
-# Todos
-* Apply some of the Backlog Features.
-* Instead of outright deleting a task how about adding in another list of tasks done in another table for later reference.
-* Use React.js to make the reminder automation smoother, making Flask more like an API - Useful references for Flask-React: https://towardsdatascience.com/build-deploy-a-react-flask-app-47a89a5d17d9
 
 # Development details
 Development code is running on http://localhost:8000/
