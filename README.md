@@ -1,15 +1,9 @@
 # Main Description
 An online app that has a lot of todo list items and can set reminders for the user.  
 The data on the table will be organized off of the date they are due (or when the task was created).  
-A combo of both iCal and reminders on the iPhone/Mac.
+An app inspired by both of Apple's Reminders app and iCal.
 
 Go to http://35.162.237.112/ to see the live website run off of aws-ec2 server.
-
-# Development details
-
-Development code is running on http://localhost:8000/
-
-Inorder for the application to work you will need to add in a project_key.py file for sensitive information like mySQL_password (string) and flask_key (string).  Put this file under flask_app/config/.
 
 # Frameworks used
 * Flask (Python)
@@ -40,12 +34,22 @@ Inorder for the application to work you will need to add in a project_key.py fil
 
 # Product Backlog
 * Create an automation email reminder to send to the user about their assigned task.
-* Add in a warning page before deleting an account
-* Create a calendar page to see when an where things are due.
+* Add in a warning page before deleting a user account (Deletion warning page)
+* Create a calendar page to see when an where things are due (Calendar View), currently only have List View.
 * Add in a notes page and people so that users can interact.
-* Create a desktop app version of this app.
-* Create a mobile app version using Swift/Java (need to learn both of these languages)
+* Create a desktop app version of this app using Docker.
+* Create a mobile app version using Swift/Java.
 
 # Citing work
 For datetime module for class details on the python documentation: https://docs.python.org/3/library/datetime.html
 Also look at both Flask and Bootstrap documentation for more info.
+
+# Todos
+* Apply some of the Backlog Features.
+* Instead of outright deleting a task how about adding in another list of tasks done in another table for later reference.
+* Use React.js to make the reminder automation smoother, making Flask more like an API - Useful references for Flask-React: https://towardsdatascience.com/build-deploy-a-react-flask-app-47a89a5d17d9
+
+# Development details
+Development code is running on http://localhost:8000/
+
+Inorder for the application to work you will need to add in a project_key.py file for sensitive information like mySQL_password (string) and flask_key (string).  Put this file under flask_app/config/.
