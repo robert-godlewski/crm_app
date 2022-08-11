@@ -4,6 +4,6 @@
     margin: 0;
 }
 
-form, table, tr, th, td {
-    border: 1px black solid;
+.centerText {
+    text-align: center;
 }

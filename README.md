@@ -5,6 +5,8 @@ An app inspired by both of Apple's Reminders app and iCal.
 
 Go to http://35.162.237.112/ to see the live website run off of aws-ec2 server.
 
+Currently developing Version 2 build.
+
 # Release Notes
 master branch in the repository is the current and up to date material.
 
@@ -24,6 +26,7 @@ Also look at both Flask and Bootstrap documentation for more info.
 * Bootstrap (CSS/JavaScript)
 
 # Todos
+* Implement html templates for faster reads of code
 * Apply some of the Backlog ideas (Read below under Product Backlog Section of this file)
 * Instead of outright deleting a task how about adding in another list of tasks done in another table for later reference.
 * Use React.js to make the reminder automation smoother, making Flask more like an API - Useful references for Flask-React: https://towardsdatascience.com/build-deploy-a-react-flask-app-47a89a5d17d9
